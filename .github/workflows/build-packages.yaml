@@ -17,14 +17,14 @@ on:
 jobs:
   build:
     name: Build for ${{ github.event.inputs.model || inputs.model || 'LX06' }}
-    if: ${{ github.repository == 'duhow/xiaoai-patch' }}
+#    if: ${{ github.repository == 'duhow/xiaoai-patch' }}
     env:
       MODEL: ${{ github.event.inputs.model || inputs.model || 'LX06' }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Build image
-        uses: docker/build-push-action@v3
+        uses: docker/build-push-action@v5
         with:
           context: packages
           tags: xiaoai-patch
